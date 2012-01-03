@@ -19,7 +19,7 @@ public class KLPlayerListener extends PlayerListener {
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if(!event.isCancelled())
 		{
-			if (event.getAction() == Action.RIGHT_CLICK_BLOCK)
+			if (event.getAction() == Action.LEFT_CLICK_BLOCK)
 			{
 				final Block block = event.getClickedBlock();
 				if(block.getType().equals(Material.WALL_SIGN))
