@@ -22,6 +22,7 @@ public class Config {
 		defaults.put("amount", 1);
 		defaults.put("effects", true);
 		defaults.put("list", new ArrayList<String>());
+		defaults.put("version", plugin.getDescription().getVersion());
 		boolean gen = false;
 		for(final Entry<String, Object> e : defaults.entrySet())
 		{
@@ -49,8 +50,8 @@ public class Config {
 
 	public Map<Item, Double> getLotto(String lotto)
 	{
-		Map<Item,Double> list = new HashMap<Item, Double>();
-		ConfigurationSection section = plugin.getConfig().getConfigurationSection(lotto);
+		final Map<Item,Double> list = new HashMap<Item, Double>();
+		final ConfigurationSection section = plugin.getConfig().getConfigurationSection(lotto);
 		for(final String entry : section.getKeys(false))
 		{
 			try
@@ -59,7 +60,7 @@ public class Config {
 				//If it has child nodes, parse those as well
 				if (section.isConfigurationSection(entry))
 				{
-					ConfigurationSection sec = section
+					final ConfigurationSection sec = section
 							.getConfigurationSection(entry);
 					for (final String dataValue : sec.getKeys(false))
 					{

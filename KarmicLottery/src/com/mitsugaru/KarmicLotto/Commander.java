@@ -31,6 +31,7 @@ public class Commander implements CommandExecutor {
 			{
 				sender.sendMessage(ChatColor.LIGHT_PURPLE + name);
 			}
+			return true;
 		}
 		else
 		{
@@ -48,7 +49,7 @@ public class Commander implements CommandExecutor {
 				}
 				return true;
 			}
-			else if(com.equals("help"))
+			else if(com.equals("help") || com.equals("?"))
 			{
 				sender.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Sign instructions:");
 				sender.sendMessage(ChatColor.YELLOW + " Second line: [KarmicLotto]");

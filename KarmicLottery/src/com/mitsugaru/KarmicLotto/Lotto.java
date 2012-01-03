@@ -174,8 +174,11 @@ public class Lotto {
 			}
 			first = false;
 		}
-
-		return new ItemStack(i.getItemTypeId(), plugin.getPluginConfig().amount, i.itemDurability());
+		if(i.isPotion())
+		{
+			return new ItemStack(i.getItemTypeId(), plugin.getPluginConfig().amount, i.itemDurability());
+		}
+		return new ItemStack(i.getItemTypeId(), plugin.getPluginConfig().amount, i.getData());
 	}
 
 	/**
