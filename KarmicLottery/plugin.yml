@@ -1,0 +1,35 @@
+name: KarmicLotto
+
+main: com.mitsugaru.KarmicLotto.KarmicLotto
+
+version: 0.1
+
+website: http://dev.bukkit.org/server-mods/karmiclotto/
+
+description: Simple lottery system
+
+authors:
+  - Mitsugaru
+
+commands:
+  lotto:
+    description: Root command for KarmicLotto
+    usage: /lotto ? - Show help on KarmicLotto
+
+permissions:
+    KarmicLotto.*:
+        description: Gives access to all KarmicLotto commands
+        children:
+            KarmicLotto.use: true
+            KarmicLotto.create: true
+            KarmicLotto.admin: true
+        default: op
+    KarmicLotto.use:
+        description: Allows user to use lottery signs
+        default: op
+    KarmicLotto.create:
+        description: Allows user to create lottery signs
+        default: op
+    KarmicLotto.admin:
+        description: Allows user to administrate plugin
+        default: op
