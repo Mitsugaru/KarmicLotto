@@ -36,7 +36,6 @@ public class Lotto {
 				//Cannot have negative lottery
 				return false;
 			}
-			//TODO check if in config
 			List<String> lottos = plugin.getConfig().getStringList("list");
 			ListIterator<String> iterator = lottos.listIterator();
 			while (iterator.hasNext())
@@ -91,7 +90,7 @@ public class Lotto {
 							er = econ.withdrawPlayer(player.getName(), price);
 							if (er.type == EconomyResponse.ResponseType.SUCCESS)
 							{
-								player.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Got " + ChatColor.AQUA + plugin.getPluginConfig().amount + ChatColor.GREEN + " of " + ChatColor.GOLD + item.toString());
+								player.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Got " + ChatColor.AQUA + plugin.getPluginConfig().amount + ChatColor.GREEN + " of " + ChatColor.GOLD + item.getType().toString());
 							}
 							else
 							{
@@ -137,9 +136,7 @@ public class Lotto {
 			{
 				final Map.Entry<Item, Double> entry = it.next();
 				final double d = (entry.getValue().doubleValue() * adj) / 100;
-				plugin.syslog.info("d: " + d);
 				high -= d;
-				plugin.syslog.info(entry.getKey().getItemTypeId() + " : " + high + "%");
 				list.put(entry.getKey(), high);
 			}
 		}
@@ -151,15 +148,12 @@ public class Lotto {
 			{
 				final Map.Entry<Item, Double> entry = it.next();
 				final double d = entry.getValue().doubleValue() / 100;
-				plugin.syslog.info("d: " + d);
 				high -= d;
-				plugin.syslog.info(entry.getKey().getItemTypeId() + " : " + high + "%");
 				list.put(entry.getKey(), high);
 			}
 		}
 		Random r = new Random();
 		double value = r.nextDouble();
-		plugin.syslog.info("Random: "+ value);
 		Item i = new Item(0,Byte.valueOf("" + 0), (short)0);
 		Iterator<Entry<Item, Double>> it = list.entrySet().iterator();
 		boolean first = true;
