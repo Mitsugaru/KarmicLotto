@@ -57,6 +57,7 @@ public class KarmicLotto extends JavaPlugin {
 		KLBlockListener blockListener = new KLBlockListener(this);
 		KLPlayerListener playerListener = new KLPlayerListener(this);
 		pm.registerEvent(Event.Type.SIGN_CHANGE, blockListener, Priority.Normal, this);
+		pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Monitor, this);
 		//Generate lotto object
 		lotto = new Lotto(this);

@@ -90,7 +90,8 @@ public class Lotto {
 							er = econ.withdrawPlayer(player.getName(), price);
 							if (er.type == EconomyResponse.ResponseType.SUCCESS)
 							{
-								player.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Got " + ChatColor.AQUA + plugin.getPluginConfig().amount + ChatColor.GREEN + " of " + ChatColor.GOLD + item.getType().toString());
+								final Item i = new Item(item.getTypeId(), item.getData().getData(), item.getDurability());
+								player.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Got " + ChatColor.AQUA + plugin.getPluginConfig().amount + ChatColor.GREEN + " of " + ChatColor.GOLD + i.name);
 							}
 							else
 							{

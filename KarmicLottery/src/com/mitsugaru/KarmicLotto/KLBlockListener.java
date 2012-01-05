@@ -1,6 +1,9 @@
 package com.mitsugaru.KarmicLotto;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.block.Sign;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.SignChangeEvent;
 
@@ -50,6 +53,38 @@ public class KLBlockListener extends BlockListener {
 					event.setLine(1, "");
 					event.setLine(2, "");
 					event.setLine(3, "");
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onBlockBreak(final BlockBreakEvent event) {
+		if (!event.isCancelled())
+		{
+			final Material material = event.getBlock().getType();
+			if (material.equals(Material.WALL_SIGN))
+			{
+				final Sign sign = (Sign) event.getBlock().getState();
+				boolean has = false;
+				for (String s : sign.getLines())
+				{
+					if (ChatColor.stripColor(s).equalsIgnoreCase(
+							"[KarmicLotto]"))
+					{
+						// Sign already exists
+						has = true;
+					}
+				}
+				if (has)
+				{
+					if (!plugin.getPerm().has(
+							event.getPlayer(), "KarmicLotto.create"))
+					{
+						//Deny as they don't have permission
+						event.getPlayer().sendMessage(ChatColor.RED + KarmicLotto.prefix + " Lack permission: KarmicLotto.create");
+						event.setCancelled(true);
+					}
 				}
 			}
 		}
