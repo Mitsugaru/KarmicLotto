@@ -22,7 +22,7 @@ public class KLPlayerListener extends PlayerListener {
 			if (event.getAction() == Action.LEFT_CLICK_BLOCK)
 			{
 				final Block block = event.getClickedBlock();
-				if(block.getType().equals(Material.WALL_SIGN))
+				if(event.getClickedBlock().getType().equals(Material.WALL_SIGN) || event.getClickedBlock().getType().equals(Material.SIGN) || event.getClickedBlock().getType().equals(Material.SIGN_POST))
 				{
 					Sign sign = (Sign) block.getState();
 					if(ChatColor.stripColor(sign.getLine(1)).equalsIgnoreCase("[KarmicLotto]"))

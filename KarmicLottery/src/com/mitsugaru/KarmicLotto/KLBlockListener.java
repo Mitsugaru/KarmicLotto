@@ -63,7 +63,7 @@ public class KLBlockListener extends BlockListener {
 		if (!event.isCancelled())
 		{
 			final Material material = event.getBlock().getType();
-			if (material.equals(Material.WALL_SIGN))
+			if (material.equals(Material.WALL_SIGN) || material.equals(Material.SIGN) || material.equals(Material.SIGN_POST))
 			{
 				final Sign sign = (Sign) event.getBlock().getState();
 				boolean has = false;
