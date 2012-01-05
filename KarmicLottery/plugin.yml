@@ -8,6 +8,8 @@ website: http://dev.bukkit.org/server-mods/karmiclotto/
 
 description: Simple lottery system
 
+depends: [Vault]
+
 authors:
   - Mitsugaru
 
