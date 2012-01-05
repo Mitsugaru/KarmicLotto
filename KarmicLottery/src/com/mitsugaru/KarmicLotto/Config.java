@@ -66,9 +66,17 @@ public class Config {
 					{
 						int secondKey = Integer.parseInt(dataValue);
 						double secondValue = sec.getDouble(dataValue);
+						if(key != 373)
+						{
 						list.put(
 								new Item(key, Byte.parseByte("" + secondKey), (short) secondKey),
 								secondValue);
+						}
+						else
+						{
+							list.put(new Item(key, Byte.parseByte("" + 0), (short) secondKey),
+									secondValue);
+						}
 					}
 				}
 				else
