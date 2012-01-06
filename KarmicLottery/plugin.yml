@@ -2,7 +2,7 @@ name: KarmicLotto
 
 main: com.mitsugaru.KarmicLotto.KarmicLotto
 
-version: 0.11
+version: 0.12
 
 website: http://dev.bukkit.org/server-mods/karmiclotto/
 
@@ -23,11 +23,15 @@ permissions:
         description: Gives access to all KarmicLotto commands
         children:
             KarmicLotto.use: true
+            KarmicLotto.view: true
             KarmicLotto.create: true
             KarmicLotto.admin: true
         default: op
     KarmicLotto.use:
         description: Allows user to use lottery signs
+        default: op
+    KarmicLotto.view:
+        description: Allows view contents of lotteries
         default: op
     KarmicLotto.create:
         description: Allows user to create lottery signs

@@ -40,8 +40,8 @@ public class Commander implements CommandExecutor {
 			{
 				if(perm.has(sender, "KarmicLotto.admin"))
 				{
-					//TODO reload
-					sender.sendMessage(ChatColor.YELLOW + KarmicLotto.prefix + " TODO: Config reloaded");
+					plugin.getPluginConfig().reload();
+					sender.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Config reloaded");
 				}
 				else
 				{

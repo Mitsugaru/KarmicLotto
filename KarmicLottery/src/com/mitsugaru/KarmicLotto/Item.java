@@ -18,6 +18,7 @@ public class Item extends MaterialData {
 	// Class variables
 	public String name;
 	private short durability;
+	private int amount;
 
 	/**
 	 * Constructor
@@ -25,9 +26,10 @@ public class Item extends MaterialData {
 	 * @param int of item id
 	 * @param byte of data value
 	 */
-	public Item(int i, byte d, short dur) {
+	public Item(int i, byte d, short dur, int amount) {
 		super(i, d);
 		durability = dur;
+		this.amount = amount;
 		name = "";
 		// Only custom names required for blocks.
 		// Not for non-block type entities
@@ -561,5 +563,10 @@ public class Item extends MaterialData {
 	 */
 	public short itemDurability() {
 		return this.durability;
+	}
+
+	public int itemAmount()
+	{
+		return this.amount;
 	}
 }

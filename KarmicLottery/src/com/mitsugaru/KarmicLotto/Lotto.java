@@ -90,8 +90,8 @@ public class Lotto {
 							er = econ.withdrawPlayer(player.getName(), price);
 							if (er.type == EconomyResponse.ResponseType.SUCCESS)
 							{
-								final Item i = new Item(item.getTypeId(), item.getData().getData(), item.getDurability());
-								player.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Got " + ChatColor.AQUA + plugin.getPluginConfig().amount + ChatColor.GREEN + " of " + ChatColor.GOLD + i.name);
+								final Item i = new Item(item.getTypeId(), item.getData().getData(), item.getDurability(), item.getAmount());
+								player.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Got " + ChatColor.AQUA + item.getAmount() + ChatColor.GREEN + " of " + ChatColor.GOLD + i.name);
 							}
 							else
 							{
@@ -155,7 +155,7 @@ public class Lotto {
 		}
 		Random r = new Random();
 		double value = r.nextDouble();
-		Item i = new Item(0,Byte.valueOf("" + 0), (short)0);
+		Item i = new Item(0,Byte.valueOf("" + 0), (short)0, 0);
 		Iterator<Entry<Item, Double>> it = list.entrySet().iterator();
 		boolean first = true;
 		//adjust
@@ -177,9 +177,9 @@ public class Lotto {
 		}
 		if(i.isPotion())
 		{
-			return new ItemStack(i.getItemTypeId(), plugin.getPluginConfig().amount, i.itemDurability());
+			return new ItemStack(i.getItemTypeId(), i.itemAmount(), i.itemDurability());
 		}
-		return new ItemStack(i.getItemTypeId(), plugin.getPluginConfig().amount, i.getData());
+		return new ItemStack(i.getItemTypeId(), i.itemAmount(), i.getData());
 	}
 
 	/**
