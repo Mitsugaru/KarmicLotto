@@ -72,8 +72,19 @@ public class Lotto {
 			if(has)
 			{
 				final Economy econ = plugin.getEco();
-				EconomyResponse er = econ.bankBalance(player.getName());
-				double balance = er.balance;
+				EconomyResponse er = new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "Not initialized");
+				double balance = 0;
+				if(econ.getName().equals("BOSEconomy") || econ.getName().equals("iConomy 5") || econ.getName().equals("Essentials Economy"))
+				{
+					er = new EconomyResponse(0,0,EconomyResponse.ResponseType.SUCCESS,"Forced bank balance");
+					balance = econ.getBalance(player.getName());
+				}
+				else
+				{
+					er = econ.bankBalance(player.getName());
+					balance = er.balance;
+				}
+
 				if (er.type == EconomyResponse.ResponseType.SUCCESS)
 				{
 					if(balance >= price)
