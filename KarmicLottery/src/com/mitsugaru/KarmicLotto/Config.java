@@ -87,6 +87,14 @@ public class Config {
 		final Map<Item, Double> list = new HashMap<Item, Double>();
 		final ConfigurationSection section = plugin.getConfig()
 				.getConfigurationSection(lotto);
+		if(section == null)
+		{
+			//NPE check, return empty list
+			plugin.syslog.warning("Attempted to get lotto '" + lotto + "', but the section does not exist...");
+			plugin.syslog.warning("!!!!!!CHECK YOUR CONFIG!!!!!!");
+			return list;
+
+		}
 		for (final String entry : section.getKeys(false))
 		{
 			try
