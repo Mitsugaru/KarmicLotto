@@ -3,18 +3,20 @@ package com.mitsugaru.KarmicLotto;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.SignChangeEvent;
 
-public class KLBlockListener extends BlockListener {
+public class KLBlockListener implements Listener {
 	private KarmicLotto plugin;
 
 	public KLBlockListener(KarmicLotto karmicLotto) {
 		plugin = karmicLotto;
 	}
 
-	@Override
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onSignChange(final SignChangeEvent event) {
 		if (!event.isCancelled())
 		{
@@ -58,7 +60,7 @@ public class KLBlockListener extends BlockListener {
 		}
 	}
 
-	@Override
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockBreak(final BlockBreakEvent event) {
 		if (!event.isCancelled())
 		{

@@ -4,18 +4,20 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerListener;
 
-public class KLPlayerListener extends PlayerListener {
+public class KLPlayerListener implements Listener {
 	private KarmicLotto plugin;
 
 	public KLPlayerListener(KarmicLotto karmicLotto) {
 		plugin = karmicLotto;
 	}
 
-	@Override
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if(!event.isCancelled())
 		{

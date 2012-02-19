@@ -4,8 +4,6 @@ import java.util.logging.Logger;
 
 import net.milkbowl.vault.economy.Economy;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -56,9 +54,8 @@ public class KarmicLotto extends JavaPlugin {
 		//Create listener
 		KLBlockListener blockListener = new KLBlockListener(this);
 		KLPlayerListener playerListener = new KLPlayerListener(this);
-		pm.registerEvent(Event.Type.SIGN_CHANGE, blockListener, Priority.Normal, this);
-		pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Priority.Normal, this);
-		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Monitor, this);
+		pm.registerEvents(blockListener, this);
+		pm.registerEvents(playerListener, this);
 		//Generate lotto object
 		lotto = new Lotto(this);
 		syslog.info(prefix + " v " + this.getDescription().getVersion() + " enabled");
