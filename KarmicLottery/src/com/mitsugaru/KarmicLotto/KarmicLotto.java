@@ -30,49 +30,45 @@ public class KarmicLotto extends JavaPlugin {
 		syslog = this.getServer().getLogger();
 		// Config
 		config = new Config(this);
-		//Create permissions
+		// Create permissions
 		perm = new PermCheck(this);
-		//Create commander
+		// Create commander
 		commander = new Commander(this);
 		getCommand("lotto").setExecutor(commander);
-		//Get economy
+		// Grab plugin manager
+		final PluginManager pm = getServer().getPluginManager();
+		// Create listeners
+		KLBlockListener blockListener = new KLBlockListener(this);
+		KLPlayerListener playerListener = new KLPlayerListener(this);
+		//Register listeners
+		pm.registerEvents(blockListener, this);
+		pm.registerEvents(playerListener, this);
+		// Get economy
 		RegisteredServiceProvider<Economy> economyProvider = this.getServer()
 				.getServicesManager()
 				.getRegistration(net.milkbowl.vault.economy.Economy.class);
-		if (economyProvider != null)
-		{
+		if (economyProvider != null) {
 			eco = economyProvider.getProvider();
-		}
-		else
-		{
+		} else {
 			// No economy system found, disable
 			syslog.warning(prefix + " No economy found!");
 			this.getServer().getPluginManager().disablePlugin(this);
 		}
-
-		PluginManager pm = this.getServer().getPluginManager();
-		//Create listener
-		KLBlockListener blockListener = new KLBlockListener(this);
-		KLPlayerListener playerListener = new KLPlayerListener(this);
-		pm.registerEvents(blockListener, this);
-		pm.registerEvents(playerListener, this);
-		//Generate lotto object
+		// Generate lotto object
 		lotto = new Lotto(this);
-		syslog.info(prefix + " v " + this.getDescription().getVersion() + " enabled");
+		syslog.info(prefix + " v " + this.getDescription().getVersion()
+				+ " enabled");
 	}
 
-	public Lotto getLotto()
-	{
+	public Lotto getLotto() {
 		return lotto;
 	}
 
-	public Config getPluginConfig()
-	{
+	public Config getPluginConfig() {
 		return config;
 	}
 
-	public Economy getEco()
-	{
+	public Economy getEco() {
 		return eco;
 	}
 
