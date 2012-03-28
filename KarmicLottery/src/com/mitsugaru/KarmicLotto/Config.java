@@ -8,13 +8,25 @@ import java.util.Map.Entry;
 
 import org.bukkit.configuration.ConfigurationSection;
 
-public class Config {
+public class Config
+{
 	private KarmicLotto plugin;
 	public boolean debug, effects;
 	public int amount;
 	public int percent;
 
-	public Config(KarmicLotto karmiclottery) {
+	/*
+	 * TODO allow these for items
+	 * 
+	 * PROTECTION_ENVIRONMENTAL PROTECTION_FIRE PROTECTION_FALL
+	 * PROTECTION_EXPLOSIONS ROTECTION_PROJECTILE OXYGEN WATER_WORKER DAMAGE_ALL
+	 * DAMAGE_UNDEAD DAMAGE_ARTHROPODS KNOCKBACK FIRE_ASPECT LOOT_BONUS_MOBS
+	 * DIG_SPEED SILK_TOUCH DURABILITY LOOT_BONUS_BLOCKS ARROW_DAMAGE
+	 * ARROW_KNOCKBACK ARROW_FIRE ARROW_INFINITE
+	 */
+
+	public Config(KarmicLotto karmiclottery)
+	{
 		plugin = karmiclottery;
 		ConfigurationSection config = plugin.getConfig();
 		// Hashmap of defaults
@@ -49,12 +61,14 @@ public class Config {
 		checkUpdate();
 	}
 
-	private void checkUpdate() {
+	private void checkUpdate()
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void reload() {
+	public void reload()
+	{
 		// Reload
 		plugin.reloadConfig();
 		// Grab config
@@ -67,7 +81,8 @@ public class Config {
 		boundsCheck();
 	}
 
-	public void boundsCheck() {
+	public void boundsCheck()
+	{
 		// Bounds check
 		if (amount <= 0)
 		{
@@ -83,14 +98,16 @@ public class Config {
 		}
 	}
 
-	public Map<Item, Double> getLotto(String lotto) {
+	public Map<Item, Double> getLotto(String lotto)
+	{
 		final Map<Item, Double> list = new HashMap<Item, Double>();
 		final ConfigurationSection section = plugin.getConfig()
 				.getConfigurationSection(lotto);
-		if(section == null)
+		if (section == null)
 		{
-			//NPE check, return empty list
-			plugin.syslog.warning("Attempted to get lotto '" + lotto + "', but the section does not exist...");
+			// NPE check, return empty list
+			plugin.syslog.warning("Attempted to get lotto '" + lotto
+					+ "', but the section does not exist...");
 			plugin.syslog.warning("!!!!!!CHECK YOUR CONFIG!!!!!!");
 			return list;
 
@@ -182,19 +199,23 @@ public class Config {
 		return list;
 	}
 
-	public void save() {
+	public void save()
+	{
 		plugin.saveConfig();
 	}
 
-	public void setProperty(String path, Object o) {
+	public void setProperty(String path, Object o)
+	{
 		plugin.getConfig().set(path, o);
 	}
 
-	public Object getProperty(String path) {
+	public Object getProperty(String path)
+	{
 		return plugin.getConfig().get(path);
 	}
 
-	public List<String> getStringList(String path) {
+	public List<String> getStringList(String path)
+	{
 		List<String> list = plugin.getConfig().getStringList(path);
 		if (list != null)
 		{
@@ -203,23 +224,28 @@ public class Config {
 		return new ArrayList<String>();
 	}
 
-	public void removeProperty(String path) {
+	public void removeProperty(String path)
+	{
 		plugin.getConfig().set(path, null);
 	}
 
-	public boolean getBoolean(String path) {
+	public boolean getBoolean(String path)
+	{
 		return (Boolean) (this.getProperty(path));
 	}
 
-	public double getDouble(String path) {
+	public double getDouble(String path)
+	{
 		return (Double) (this.getProperty(path));
 	}
 
-	public int getInteger(String path) {
+	public int getInteger(String path)
+	{
 		return (Integer) (this.getProperty(path));
 	}
 
-	public String getString(String path) {
+	public String getString(String path)
+	{
 		return (String) this.getProperty(path);
 	}
 }
