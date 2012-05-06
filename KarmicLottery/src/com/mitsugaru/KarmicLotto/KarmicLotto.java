@@ -22,7 +22,6 @@ public class KarmicLotto extends JavaPlugin {
 	public void onDisable() {
 		// Save config
 		this.saveConfig();
-		getLogger().info(prefix + " Plugin disabled");
 	}
 
 	@Override
@@ -50,13 +49,11 @@ public class KarmicLotto extends JavaPlugin {
 			eco = economyProvider.getProvider();
 		} else {
 			// No economy system found, disable
-			getLogger().warning(prefix + " No economy found!");
+			getLogger().warning("No economy found!");
 			this.getServer().getPluginManager().disablePlugin(this);
 		}
 		// Generate lotto object
 		lotto = new Lotto(this);
-		getLogger().info(prefix + " v " + this.getDescription().getVersion()
-				+ " enabled");
 	}
 
 	public Lotto getLotto() {
