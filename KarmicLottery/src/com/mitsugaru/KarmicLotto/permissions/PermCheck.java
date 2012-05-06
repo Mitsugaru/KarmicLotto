@@ -1,4 +1,4 @@
-package com.mitsugaru.KarmicLotto;
+package com.mitsugaru.KarmicLotto.permissions;
 
 import net.milkbowl.vault.permission.Permission;
 
@@ -6,6 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
+
+import com.mitsugaru.KarmicLotto.KarmicLotto;
 
 import ru.tehkode.permissions.PermissionManager;
 import ru.tehkode.permissions.bukkit.PermissionsEx;

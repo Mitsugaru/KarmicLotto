@@ -1,4 +1,4 @@
-package com.mitsugaru.KarmicLotto;
+package com.mitsugaru.KarmicLotto.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -8,6 +8,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
+
+import com.mitsugaru.KarmicLotto.KarmicLotto;
+import com.mitsugaru.KarmicLotto.permissions.Permission;
 
 public class KLBlockListener implements Listener {
 	private KarmicLotto plugin;
@@ -26,7 +29,7 @@ public class KLBlockListener implements Listener {
 
 
 				boolean valid = false;
-				if(plugin.getPerm().has(event.getPlayer(), "KarmicLotto.create"))
+				if(plugin.getPerm().has(event.getPlayer(), Permission.CREATE.getNode()))
 				{
 					if(plugin.getLotto().validateLotto(event.getPlayer(), event.getLine(2), event.getLine(3)))
 					{
@@ -46,7 +49,7 @@ public class KLBlockListener implements Listener {
 				}
 				else
 				{
-					event.getPlayer().sendMessage(ChatColor.RED + KarmicLotto.prefix + " Lack permission: KarmicLotto.create");
+					event.getPlayer().sendMessage(ChatColor.RED + KarmicLotto.prefix + " Lack permission: " + Permission.CREATE.getNode());
 				}
 				if(!valid)
 				{
@@ -81,10 +84,10 @@ public class KLBlockListener implements Listener {
 				if (has)
 				{
 					if (!plugin.getPerm().has(
-							event.getPlayer(), "KarmicLotto.create"))
+							event.getPlayer(), Permission.CREATE.getNode()))
 					{
 						//Deny as they don't have permission
-						event.getPlayer().sendMessage(ChatColor.RED + KarmicLotto.prefix + " Lack permission: KarmicLotto.create");
+						event.getPlayer().sendMessage(ChatColor.RED + KarmicLotto.prefix + " Lack permission: " + Permission.CREATE.getNode());
 						event.setCancelled(true);
 					}
 				}

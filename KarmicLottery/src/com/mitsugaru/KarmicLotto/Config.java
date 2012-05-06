@@ -16,7 +16,7 @@ public class Config
 	public int percent;
 
 	/*
-	 * TODO allow these for items
+	 * TODO allow these for item enchantments
 	 * 
 	 * PROTECTION_ENVIRONMENTAL PROTECTION_FIRE PROTECTION_FALL
 	 * PROTECTION_EXPLOSIONS ROTECTION_PROJECTILE OXYGEN WATER_WORKER DAMAGE_ALL
@@ -47,7 +47,7 @@ public class Config
 		}
 		if (gen)
 		{
-			plugin.syslog
+			plugin.getLogger()
 					.info(KarmicLotto.prefix
 							+ " No KarmicLotto config file found. Creating config file.");
 		}
@@ -86,13 +86,13 @@ public class Config
 		// Bounds check
 		if (amount <= 0)
 		{
-			plugin.syslog.warning(KarmicLotto.prefix
+			plugin.getLogger().warning(KarmicLotto.prefix
 					+ " Zero or negative amount for default");
 			amount = 1;
 		}
 		if (percent <= 0)
 		{
-			plugin.syslog.warning(KarmicLotto.prefix
+			plugin.getLogger().warning(KarmicLotto.prefix
 					+ " Zero or negative percent for default");
 			percent = 1;
 		}
@@ -106,9 +106,9 @@ public class Config
 		if (section == null)
 		{
 			// NPE check, return empty list
-			plugin.syslog.warning("Attempted to get lotto '" + lotto
+			plugin.getLogger().warning("Attempted to get lotto '" + lotto
 					+ "', but the section does not exist...");
-			plugin.syslog.warning("!!!!!!CHECK YOUR CONFIG!!!!!!");
+			plugin.getLogger().warning("!!!!!!CHECK YOUR CONFIG!!!!!!");
 			return list;
 
 		}
@@ -126,7 +126,7 @@ public class Config
 					data = Integer.parseInt(split[1]);
 					if (data < 0)
 					{
-						plugin.syslog.warning(KarmicLotto.prefix
+						plugin.getLogger().warning(KarmicLotto.prefix
 								+ " Negative data value for entry: " + entry);
 						data = 0;
 					}
@@ -137,7 +137,7 @@ public class Config
 				}
 				if (item <= 0)
 				{
-					plugin.syslog.warning(KarmicLotto.prefix
+					plugin.getLogger().warning(KarmicLotto.prefix
 							+ " Zero or negative item id for entry: " + entry);
 					item = 1;
 				}
@@ -152,14 +152,14 @@ public class Config
 					// Bounds check on the values
 					if (prizeAmount <= 0)
 					{
-						plugin.syslog.warning(KarmicLotto.prefix
+						plugin.getLogger().warning(KarmicLotto.prefix
 								+ " Zero or negative amount for entry: "
 								+ entry);
 						prizeAmount = amount;
 					}
 					if (prizePercent <= 0)
 					{
-						plugin.syslog.warning(KarmicLotto.prefix
+						plugin.getLogger().warning(KarmicLotto.prefix
 								+ " Zero or negative percent for entry: "
 								+ entry);
 						prizePercent = 1;
@@ -192,7 +192,7 @@ public class Config
 			}
 			catch (final NumberFormatException ex)
 			{
-				plugin.syslog.warning("Non-integer value in karma list");
+				plugin.getLogger().warning("Non-integer value in karma list");
 				ex.printStackTrace();
 			}
 		}

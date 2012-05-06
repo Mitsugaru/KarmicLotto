@@ -8,6 +8,7 @@ package com.mitsugaru.KarmicLotto;
 import org.bukkit.Material;
 //import org.bukkit.material.Dye;
 //import org.bukkit.material.Leaves;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.LongGrass;
 import org.bukkit.material.MaterialData;
 import org.bukkit.material.Step;
@@ -19,7 +20,13 @@ public class Item extends MaterialData {
 	public String name;
 	private short durability;
 	private int amount;
-
+	
+	public Item(ItemStack i)
+	{
+		super(i.getTypeId(), i.getData().getData());
+		init(i.getTypeId(), i.getData().getData(), i.getDurability(), i.getAmount());
+	}
+	
 	/**
 	 * Constructor
 	 *
@@ -28,6 +35,10 @@ public class Item extends MaterialData {
 	 */
 	public Item(int i, byte d, short dur, int amount) {
 		super(i, d);
+		init(i, d, dur, amount);
+	}
+
+	private void init(int i, byte d, short dur, int amount) {
 		durability = dur;
 		this.amount = amount;
 		name = "";

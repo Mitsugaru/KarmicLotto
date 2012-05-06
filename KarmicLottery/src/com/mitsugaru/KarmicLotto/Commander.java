@@ -5,6 +5,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.mitsugaru.KarmicLotto.permissions.PermCheck;
+import com.mitsugaru.KarmicLotto.permissions.Permission;
+
 public class Commander implements CommandExecutor {
 	private KarmicLotto plugin;
 	private PermCheck perm;
@@ -38,7 +41,7 @@ public class Commander implements CommandExecutor {
 			String com = args[0];
 			if(com.equals("reload"))
 			{
-				if(perm.has(sender, "KarmicLotto.admin"))
+				if(perm.has(sender, Permission.ADMIN.getNode()))
 				{
 					plugin.getPluginConfig().reload();
 					sender.sendMessage(ChatColor.GREEN + KarmicLotto.prefix + " Config reloaded");

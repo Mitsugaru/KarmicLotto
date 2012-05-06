@@ -1,15 +1,16 @@
 package com.mitsugaru.KarmicLotto;
 
-import java.util.logging.Logger;
-
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.mitsugaru.KarmicLotto.events.KLBlockListener;
+import com.mitsugaru.KarmicLotto.events.KLPlayerListener;
+import com.mitsugaru.KarmicLotto.permissions.PermCheck;
+
 public class KarmicLotto extends JavaPlugin {
-	public Logger syslog;
 	private Commander commander;
 	private Config config;
 	private Lotto lotto;
@@ -21,13 +22,11 @@ public class KarmicLotto extends JavaPlugin {
 	public void onDisable() {
 		// Save config
 		this.saveConfig();
-		syslog.info(prefix + " Plugin disabled");
+		getLogger().info(prefix + " Plugin disabled");
 	}
 
 	@Override
 	public void onEnable() {
-		// Logger
-		syslog = this.getServer().getLogger();
 		// Config
 		config = new Config(this);
 		// Create permissions
@@ -51,12 +50,12 @@ public class KarmicLotto extends JavaPlugin {
 			eco = economyProvider.getProvider();
 		} else {
 			// No economy system found, disable
-			syslog.warning(prefix + " No economy found!");
+			getLogger().warning(prefix + " No economy found!");
 			this.getServer().getPluginManager().disablePlugin(this);
 		}
 		// Generate lotto object
 		lotto = new Lotto(this);
-		syslog.info(prefix + " v " + this.getDescription().getVersion()
+		getLogger().info(prefix + " v " + this.getDescription().getVersion()
 				+ " enabled");
 	}
 
