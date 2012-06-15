@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mitsugaru</groupId>
-  <artifactId>KarmicLottery</artifactId>
+  <artifactId>KarmicLotto</artifactId>
   <version>0.16-SNAPSHOT</version>
-  <name>KarmicLottery</name>
+  <name>KarmicLotto</name>
   <description>Old-school lottery plugin.</description>
   <scm>
-		<url>https://github.com/Mitsugaru/KarmicLottery.git</url>
+		<url>https://github.com/Mitsugaru/KarmicLotto.git</url>
 	</scm>
 	<reporting>
 		<plugins>
